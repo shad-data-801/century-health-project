@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: master_table
+    columns:
+      - name: patient_id
+        test:
+          - not_null
