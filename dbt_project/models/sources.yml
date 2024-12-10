@@ -3,8 +3,9 @@ version: 2
 sources:
   - name: raw_data
     tables:
-      - name: orders
-      - name: users
-  - name: forecasting
-    tables:
-      - name: predicted_orders
+      - name: patients
+      - name: patient_gender
+      - name: medications
+      - name: symptoms
+      - name: conditions
+      - name: encounters

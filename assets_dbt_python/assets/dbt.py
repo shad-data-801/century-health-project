@@ -1,7 +1,7 @@
 from typing import Any, Mapping
 
 from dagster import AssetExecutionContext, AssetKey
-from dagster_dbt import DagsterDbtTranslator, DbtCliResource, dbt_assets, get_asset_key_for_model
+from dagster_dbt import DagsterDbtTranslator, DagsterDbtTranslatorSettings, DbtCliResource, dbt_assets
 
 from ..project import dbt_project
 
@@ -20,10 +20,9 @@ class CustomDagsterDbtTranslator(DagsterDbtTranslator):
 
 @dbt_assets(
     manifest=dbt_project.manifest_path,
-    dagster_dbt_translator=CustomDagsterDbtTranslator(),
+    dagster_dbt_translator=CustomDagsterDbtTranslator(
+        settings=DagsterDbtTranslatorSettings(enable_asset_checks=True)
+    ),
 )
 def dbt_project_assets(context: AssetExecutionContext, dbt: DbtCliResource):
     yield from dbt.cli(["build"], context=context).stream()
-
-
-daily_order_summary_asset_key = get_asset_key_for_model([dbt_project_assets], "daily_order_summary")

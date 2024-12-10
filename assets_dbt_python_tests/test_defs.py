@@ -6,4 +6,3 @@ def test_def_can_load():
         from assets_dbt_python.definitions import defs
 
         assert defs.get_job_def("everything_everywhere_job")
-        assert defs.get_job_def("refresh_forecast_model_job")

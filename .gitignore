@@ -164,3 +164,4 @@ cython_debug/
 data/*.csv
 data/*.parquet
 data/*.xlsx
+*.duckdb
