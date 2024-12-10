@@ -5,3 +5,25 @@ build-backend = "setuptools.build_meta"
 [tool.dagster]
 module_name = "assets_dbt_python.definitions"
 code_location_name = "assets_dbt_python"
+
+[project]
+name = "century-project"
+dependencies = [
+    "dagster",
+    "dagster-cloud",
+    "boto3",
+    "dagster-dbt",
+    "pandas",
+    "numpy",
+    "scipy",
+    "dbt-core",
+    "dbt-duckdb",
+    "dagster-duckdb",
+    "dagster-duckdb-pandas",
+    # packaging v22 has build compatibility issues with dbt as of 2022-12-07
+    "packaging<22.0",
+    "matplotlib",
+    "pyarrow",
+    "dagster-webserver",
+    "openpyxl"
+]
